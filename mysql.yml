@@ -2,7 +2,7 @@
   hosts: all
   become: yes
   tasks:
-    - name: Disable MYSQL default version
+    - name: Disable MySQL default version
       ansible.builtin.shell: dnf module file
       ansible.builtin.copy:
         src: mysql.repo
