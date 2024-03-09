@@ -10,7 +10,7 @@
       ansible.builtin.copy:
         src: expense.conf
         dest: /etc/nginx/default.d/expense.conf
-    - name: clear old nginx config file
+    - name: clear old nginx Dir
       ansible.builtin.file:
         path: /usr/share/nginx/html
         status: absent
