@@ -3,7 +3,7 @@
   become: yes
   tasks:
     - name: Disable MySQL default version
-      ansible.builtin.shell: dnf module disable MySQL -y
+      ansible.builtin.shell: dnf module disable mysql -y
       ansible.builtin.copy:
         src: mysql.repo
         dest: /etc/yum.repos.d/mysql.repo
