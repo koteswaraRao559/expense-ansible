@@ -17,6 +17,7 @@
 - name: Add Application user
   ansible.builtin.user:
     name: expense
+
 - name: Import Common Role - App Pre-Requisites
   ansible.builtin.import_role:
     name: common
@@ -36,7 +37,7 @@
     state: present
 
 - name: load schema
-  ansible.builtin.shell: mysql -h mysql-dev.kdevops59.online -uroot -p{{ MYSQL_ROOT_PASSWORD }} < /app/schema/backend.sql
+  ansible.builtin.shell: mysql -h mysql-{{ env }}.kdevops59.online -uroot -p{{ MYSQL_ROOTEnvironment=DB_HOST="mysql-dev.kdevops59.online"
 
 - name: Start Backend Service
   ansible.builtin.systemd:
