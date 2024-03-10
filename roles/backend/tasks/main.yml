@@ -37,7 +37,7 @@
     state: present
 
 - name: load schema
-  ansible.builtin.shell: mysql -h mysql-{{dev}}.kdevops59.online -uroot -p{{ MYSQL_ROOTEnvironment=DB_HOST="mysql-{{env}}.kdevops59.online"
+  ansible.builtin.shell: mysql -h mysql-dev.kdevops59.online -uroot -p{{ MYSQL_ROOTEnvironment=DB_HOST="mysql-dev.kdevops59.online"
 
 - name: Start Backend Service
   ansible.builtin.systemd:
