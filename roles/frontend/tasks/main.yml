@@ -21,6 +21,7 @@
     name: nginx
     state: restarted
     enabled: yes
+
 - name: Import elk Role - Filebeat
   ansible.builtin.import_role:
     name: elk
