@@ -1,4 +1,4 @@
-- name: Create Dashboard in Grafana
+- name: Create Dashboard file
   ansible.builtin.template:
     src: dashboard.json
     dest: /tmp/dashboard.json
@@ -9,5 +9,5 @@
     grafana_api_key: "{{ lookup('amazon.aws.aws_ssm', 'grafana.api_key', region='us-east-1' ) }}"
     state: present
     commit_message: Updated by ansible
-    overwrite: true
+    overwrite: yes
     path: /tmp/dashboard.json
