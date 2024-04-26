@@ -2,6 +2,7 @@
   ansible.builtin.template:
     src: dashboard.json
     dest: /tmp/dashboard.json
+
 - name: Add Grafana Dashboard
   community.grafana.grafana_dashboard:
     grafana_url: http://172.31.20.52:3000
