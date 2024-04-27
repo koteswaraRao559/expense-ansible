@@ -95,7 +95,7 @@
             "uid": "adj9et6x017ggc"
           },
           "editorMode": "code",
-          "expr": "up{name=\"frontend-dev\"}",
+          "expr": "up{name=\"{{component}}{{env}}\"}",
           "instant": false,
           {% raw %}
           "legendFormat": "{{job}}",
@@ -192,7 +192,7 @@
             "uid": "adj9et6x017ggc"
           },
           "editorMode": "code",
-          "expr": "( node_memory_MemFree_bytes{name=\"frontend-dev\"} + node_memory_Cached_bytes{name=\"frontend-dev\"}+ node_memory_Buffers_bytes{name=\"frontend-dev\"})/ node_memory_MemTotal_bytes{name=\"frontend-dev\"}",
+          "expr": "( node_memory_MemFree_bytes{name=\"{{component}}{{env}}\"} + node_memory_Cached_bytes{name=\"{{component}}{{env}}\"}+ node_memory_Buffers_bytes{name=\"{{component}}{{env}}\"})/ node_memory_MemTotal_bytes{name=\"{{component}}{{env}}\"}",
           "instant": false,
         {% raw %}
           "legendFormat": "{{name}}",
@@ -216,7 +216,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "front-end dashboard",
+  "title": "{{component}}",
   "uid": "bdjau1yov1erkc",
   "version": 4,
   "weekStart": ""
