@@ -5,8 +5,8 @@ route:
   repeat_interval: 1h
   receiver: 'SNS'
 receivers:
-  - name: SMS
-    sms_configs:
+  - name: SNS
+    sns_configs:
       - sigv4:
           region: us-east-1
           topic_arn: arn:aws:sns:us-east-1:471112926065:email1
