@@ -8,3 +8,4 @@ groups:
           severity: critical
         annotations:
           summary: Instance Down Alert
+
