@@ -38,7 +38,7 @@
 
 - name: Generate Alert YAML File
   ansible.builtin.template:
-    src: alert-rules.yml
+    src: alert-rule.yml
     dest: /tmp/alert-rules.yml
 
 
