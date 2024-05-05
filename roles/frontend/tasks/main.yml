@@ -46,7 +46,7 @@
     bucket: d76-prometheus-instance-bucket
     object: "{{component}}-{{env}}.yml"
     src: /tmp/{{component}}-{{env}}.yml
-
+    mode: put
 
 
 
