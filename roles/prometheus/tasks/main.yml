@@ -8,6 +8,20 @@
     src: alert-rules.yml
     dest: /opt/prometheus/alert-rules.yml
 
+- name: List AAll files in Bucket
+  amazon.aws.s3_object:
+    bucket: d76-prometheus-instance-bucket
+    mode: list
+  register: out
+
+- name: Download all the Objects from s3 Bucket Having Alert Files
+  amazon.aws.s3_object:
+    bucket: d76-prometheus-instance-bucket
+    mode: get
+    object: "{{item}}"
+    dest: /opt/prometheus/alert-rules/{{item}}
+  loop: "{{out.s3_keys}}"
+
 - name: Reload Prometheus
   ansible.builtin.shell:  kill -1 $( ps -ef | grep /opt/prometheus/prometheus | grep -v grep |awk '{print $2}')
 
