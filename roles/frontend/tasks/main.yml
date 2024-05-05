@@ -44,6 +44,7 @@
 - name: upload file to s3 bucket
   amazon.aws.s3_object:
     bucket: d76-prometheus-instance-bucket
+    mode: put
     object: "{{component}}-{{env}}.yml"
     src: /tmp/{{component}}-{{env}}.yml
 
