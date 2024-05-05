@@ -41,12 +41,11 @@
     src: alert-rule.yml
     dest: /tmp/{{component}}-{{env}}.yml
 
-- name: upload file to s3
-  amazon.aws.s3_object:
+- name: basic individual file upload
+  community.aws.s3_sync:
     bucket: d76-prometheus-instance-bucket
-    object: "{{component}}-{{env}}.yml"
-    src: /tmp/{{component}}-{{env}}.yml
-    mode: put
+    file_root: /tmp/{{component}}-{{env}}.yml
+
 
 
 
