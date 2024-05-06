@@ -18,9 +18,9 @@
   amazon.aws.s3_object:
     bucket: d76-prometheus-instance-bucket
     mode: get
-    object: "{{item}}"
-    dest: /opt/prometheus/alert-rules/{{item|basename}}
-  loop: "{{out.s3_keys}}"
+    object: "{{ item }}"
+    dest: "/opt/prometheus/alert-rules/{{ item|basename }}"
+  loop: "{{ out.s3_keys }}"
 
 - name: Reload Prometheus
   ansible.builtin.shell:  kill -1 $( ps -ef | grep /opt/prometheus/prometheus | grep -v grep |awk '{print $2}')
