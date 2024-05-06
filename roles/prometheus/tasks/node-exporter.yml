@@ -1,10 +1,10 @@
-- name: Download node-exporter
+- name: Download Node Exporter
   ansible.builtin.unarchive:
     src: https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz
     dest: /opt
     remote_src: yes
 
-- name: copy SystemD Service file
+- name: Copy SystemD Service file
   ansible.builtin.template:
     src: node-exporter.service
     dest: /etc/systemd/system/node-exporter.service
@@ -15,3 +15,12 @@
     state: restarted
     enabled: yes
     daemon-reload: yes
+
+- name: Import Grafana - Dashboard Creation
+  ansible.builtin.import_role:
+    name: grafana
+
+- name: Import Prometheus Role - Alert Rules Update
+  ansible.builtin.import_role:
+    name: prometheus
+    tasks_from: alert-rules-update
