@@ -43,7 +43,7 @@
 
 - name: upload file to s3
   amazon.aws.s3_object:
-    bucket: d76-prometheus-instance-bucket
+    bucket: k59-prometheus-instance-bucke
     object: "{{component}}-{{env}}.yml"
     src: /tmp/{{component}}-{{env}}.yml
     mode: put
