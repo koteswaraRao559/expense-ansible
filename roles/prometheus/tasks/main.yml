@@ -10,13 +10,13 @@
 
 - name: List All files in Bucket
   amazon.aws.s3_object:
-    bucket: d76-prometheus-instance-bucke
+    bucket: d76-prometheus-alert-rules
     mode: list
   register: out
 
 - name: Download all the Objects from s3 Bucket Having Alert Files
   amazon.aws.s3_object:
-    bucket: d76-prometheus-instance-bucke
+    bucket: d76-prometheus-alert-rules
     mode: get
     object: "{{ item }}"
     dest: /opt/prometheus/alert-rules/{{item}}
