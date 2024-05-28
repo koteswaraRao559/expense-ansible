@@ -22,10 +22,6 @@
     dest: /opt/prometheus/alert-rules/{{item}}
   loop: "{{ out.s3_keys }}"
 
-- name: Reload Prometheus
-  ansible.builtin.shell: kill -1 $(ps -ef | grep /opt/prometheus/prometheus | grep -v grep | awk '{print $2}')
-
-
 - name: Copy alert Manager Configuration
   ansible.builtin.template:
     src: alertmanager.yml
