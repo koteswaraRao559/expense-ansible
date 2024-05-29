@@ -36,21 +36,8 @@
   ansible.builtin.import_role:
     name: grafana
 
-- name: Generate Alert YAML File
-  ansible.builtin.template:
-    src: alert-rule.yml
-    dest: /tmp/{{component}}-{{env}}.yml
-
-- name: upload file to s3
-  amazon.aws.s3_object:
-    bucket: d76-prometheus-alert-rules
-    object: "{{component}}-{{env}}.yml"
-    src: /tmp/{{component}}-{{env}}.yml
-    mode: put
-
-- name: Trigger prometheus relaod job
-  ansible.builtin.shell: curl -u {{ lookup('amazon.aws.aws_ssm','jenkins.username', region='us-east-1' ) }}:{{ lookup('amazon.aws.aws_ssm','jenkins.password', region='us-east-1' ) }} "http://private ip of jenkins:8080/job/prometheus-reload/build?token=prometheus"
-
-
-
+- name: Import Prometheus Role - Alert-Rules-Upadate
+  ansible.builtin.import_role:
+    name: prometheus
+    tasks_from: alert-rules-update
 
