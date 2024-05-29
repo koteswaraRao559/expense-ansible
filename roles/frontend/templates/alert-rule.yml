@@ -23,7 +23,18 @@ groups:
       expr: ((node_memory_MemFree_bytes + node_memory_Cached_bytes + node_memory_Buffers_bytes) / node_memory_MemTotal_bytes) * 100 > 90
       for: 1m
       labels:
-        severity: critical
+        severity: warning
         component: { { component } }
         env: { { env } }
       annotations:
+        summary: Critical | CPU Usage Alert
+
+    - alert: NetworkBWMonitorWaitQueue
+      expr: rate(node_ethtool_bw_in_allowance_exceeded[1m]) > 0
+      for: 3m
+      labels:
+        severity: warning
+        component: { { component } }
+        env: { { env } }
+      annotations:
+        summary: warning | CPU Usage Alert
