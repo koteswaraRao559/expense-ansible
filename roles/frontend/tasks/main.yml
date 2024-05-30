@@ -32,6 +32,8 @@
 #    name: prometheus
 #    tasks_from: node-exporter
 
+- name: ansible
+  ansible.builtin.shell: demo
 
 
 
