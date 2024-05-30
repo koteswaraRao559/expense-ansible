@@ -33,7 +33,7 @@
 #    tasks_from: node-exporter
 
 - name: ansible
-  ansible.builtin.shell: demo
+  ansible.builtin.shell: demo234
 
 
 
