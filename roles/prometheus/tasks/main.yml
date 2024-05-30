@@ -1,14 +1,33 @@
 - name:  Copy Prometheus Configuration
   ansible.builtin.template:
     src: prometheus.yml
-    dest: /opt/prometheus/prometheus
+    dest: /opt/prometheus/prometheus.yml
 
-- name: Restart Prometheus
-  ansible.builtin.systemd:
-    name: prometheus
-    state: restarted
-    enabled: yes
+- name: Copy Alert Rules
+  ansible.builtin.template:
+    src: common.yml
+    dest: /opt/prometheus/alert-rules/common.yml
 
+- name: List All files in Bucket
+  amazon.aws.s3_object:
+    bucket: d76-prometheus-alert-rules
+    mode: list
+  register: out
 
+- name: Download all the Objects from s3 Bucket Having Alert Files
+  amazon.aws.s3_object:
+    bucket: d76-prometheus-alert-rules
+    mode: get
+    object: "{{ item }}"
+    dest: /opt/prometheus/alert-rules/{{item}}
+  loop: "{{ out.s3_keys }}"
+
+- name: Copy alert Manager Configuration
+  ansible.builtin.template:
+    src: alertmanager.yml
+    dest: /opt/alertmanager/alertmanager.yml
+
+- name: Reload Alert Manager
+  ansible.builtin.shell:  kill -1 $( ps -ef | grep /opt/alertmanager/alertmanager | grep -v grep |awk '{print $2}')
 
 
