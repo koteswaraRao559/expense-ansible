@@ -32,7 +32,7 @@
 #    name: prometheus
 #    tasks_from: node-exporter
 
-- name: ansible
+- name: Installi New Relic Agent
   ansible.builtin.shell: curl -Ls https://download.newrelic.com/install/newrelic-cli/scripts/install.sh | bash && sudo NEW_RELIC_API_KEY=NRAK-27KLRY8YU9ZM35QX35KKNIALEWA NEW_RELIC_ACCOUNT_ID=4466271 /usr/local/bin/newrelic install -y -n infrastructure-agent-installer
 
 
