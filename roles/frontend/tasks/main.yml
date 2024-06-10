@@ -33,4 +33,4 @@
 #    tasks_from: node-exporter
 
 - name: Installing New Relic Agent
-  ansible.builtin.shell: curl -Ls https://download.newrelic.com/install/newrelic-cli/scripts/install.sh | bash && sudo NEW_RELIC_API_KEY=NRAK-QIUXZEUOTB0XYNK68ZGO1FTUDCB NEW_RELIC_ACCOUNT_ID=4466271 /usr/local/bin/newrelic install -n infrastructure-agent-installer
+  ansible.builtin.shell: curl -Ls https://download.newrelic.com/install/newrelic-cli/scripts/install.sh | bash && sudo NEW_RELIC_API_KEY=NRAK-7GB512ZY11PJZ2OR9JNPC41LKHQ NEW_RELIC_ACCOUNT_ID=4466271 /usr/local/bin/newrelic install -y -n infrastructure-agent-installer
