@@ -1,36 +1,36 @@
-#- name: Install nginx
-#  ansible.builtin.dnf:
-#    name: nginx
-#    state: present
-#
-#- name: copying expense config file
-#  ansible.builtin.template:
-#    src: expense.conf
-#    dest: /etc/nginx/default.d/expense.conf
-#
-#- name: Import Common Role - App Pre-Requisites
-#  ansible.builtin.import_role:
-#    name: common
-#    tasks_from: app-prereq
-#  vars:
-#    app_dir: /use/share/nginx/html
-#    component: frontend
-#
-#- name: Start nginx service
-#  ansible.builtin.systemd:
-#    name: nginx
-#    state: restarted
-#    enabled: yes
-#
-#- name: Import elk Role - Filebeat
-#  ansible.builtin.import_role:
-#    name: elk
-#    tasks_from: filebeat
-#
-#- name: Import Prometheus - node-exporter
-#  ansible.builtin.import_role:
-#    name: prometheus
-#    tasks_from: node-exporter
+- name: Install nginx
+  ansible.builtin.dnf:
+    name: nginx
+    state: present
 
-- name: Installing New Relic Agent
-  ansible.builtin.shell: curl -Ls https://download.newrelic.com/install/newrelic-cli/scripts/install.sh | bash && sudo NEW_RELIC_API_KEY=NRAK-7GB512ZY11PJZ2OR9JNPC41LKHQ NEW_RELIC_ACCOUNT_ID=4466271 /usr/local/bin/newrelic install -y -n infrastructure-agent-installer --tag {{component}}-{{env}}:frontend
+- name: copying expense config file
+  ansible.builtin.template:
+    src: expense.conf
+    dest: /etc/nginx/default.d/expense.conf
+
+- name: Import Common Role - App Pre-Requisites
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-prereq
+  vars:
+    app_dir: /use/share/nginx/html
+    component: frontend
+
+- name: Start nginx service
+  ansible.builtin.systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
+
+- name: Import elk Role - Filebeat
+  ansible.builtin.import_role:
+    name: elk
+    tasks_from: filebeat
+
+- name: Import Prometheus - node-exporter
+  ansible.builtin.import_role:
+    name: prometheus
+    tasks_from: node-exporter
+
+#- name: Installing New Relic Agent
+#  ansible.builtin.shell: curl -Ls https://download.newrelic.com/install/newrelic-cli/scripts/install.sh | bash && sudo NEW_RELIC_API_KEY=NRAK-7GB512ZY11PJZ2OR9JNPC41LKHQ NEW_RELIC_ACCOUNT_ID=4466271 /usr/local/bin/newrelic install -y -n infrastructure-agent-installer --tag {{component}}-{{env}}:frontend
