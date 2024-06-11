@@ -19,8 +19,8 @@ integrations:
 
     interval: 30s
     labels:
-      env: production
-      role: load_balancer
+      env: {{env}}
+      component: {{component}}
 
 - name: nri-nginx
   env:
@@ -30,7 +30,7 @@ integrations:
     REMOTE_MONITORING: true
   interval: 60s
   labels:
-    env: production
-    role: load_balancer
+    env: {{env}}
+    component: {{component}}
     inventory_source: config/nginx
 
