@@ -44,4 +44,4 @@
 - name: Copying new-relic Nginx Agent config file
   ansible.builtin.template:
     src: nr-nginx.yml
-    dest:
+    dest: /etc/newrelic-infra/integrations.d/nginx-config.yml
