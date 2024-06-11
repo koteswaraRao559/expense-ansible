@@ -17,3 +17,5 @@ integrations:
       REMOTE_MONITORING: true
 
       # validate_certs is true by default, to avoid certificate validation connecting to a HTTPS status URL set it to false
+
+
