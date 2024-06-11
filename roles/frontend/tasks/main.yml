@@ -46,7 +46,7 @@
     src: nr-nginx.yml
     dest: /etc/newrelic-infra/integrations.d/nginx-config.yml
 
-- name: Copying Newrelic Nginx Log file
+- name: Copying Newrelic Nginx Agent Log Shipper Config file
   ansible.builtin.template:
     src: nr-nginx-log.yml
     dest: /etc/newrelic-infra/logging.d/nginx-log.yml
