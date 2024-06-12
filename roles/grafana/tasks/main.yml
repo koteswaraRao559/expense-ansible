@@ -8,6 +8,6 @@
     grafana_url: http://172.31.84.107:3000
     grafana_api_key: "{{ lookup('amazon.aws.aws_ssm', 'grafana.api_key', region='us-east-1' ) }}"
     state: present
-    commit_message: Updated by ansible
+    commit_message: Updated by ansibleee
     overwrite: yes
     path: /tmp/dashboard.json
