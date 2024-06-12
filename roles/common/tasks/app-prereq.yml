@@ -1,6 +1,6 @@
 - name: Delete old app directory
   ansible.builtin.file:
-    path: "{{ app_dir}}"
+    path: "{{ app_dir }}"
     state: absent
 
 - name: Create App Directory
@@ -8,7 +8,7 @@
     path: "{{ app_dir }}"
     state: directory
     owner: "{{ app_user }}"
-    group: "{{ app_usr }}"
+    group: "{{ app_user }}"
 
 - name: Download and extract Application content
   ansible.builtin.unarchive:
